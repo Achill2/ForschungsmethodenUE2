@@ -1,9 +1,5 @@
 package main;
 
-import java.io.IOException;
-import java.io.File;
-import java.io.FileReader;
-import java.io.BufferedReader;
 import java.util.List;
 
 import stringsearch.StringSearchAlgorithm;
@@ -16,48 +12,25 @@ private String sourceString;
 private int numberOfExecutions;
 private boolean showResult;
 
-public Testcase (StringSearchAlgorithm alg, File inputStringFile, File searchStringFile, int numberOfExecutions, boolean showResult) {
+
+/**
+ * Constructor of Class testcase
+ * @param alg - the algorithm to use
+ * @param searchString - the string to search for
+ * @param sourceString - the string to search in
+ * @param numberOfExecutions
+ * @param showResults - show results or not
+ * @return
+ */
+public Testcase (StringSearchAlgorithm alg, String searchString, String sourceString, int numberOfExecutions, boolean showResult) {
 	this.alg = alg;
 	this.numberOfExecutions = numberOfExecutions;
 	this.showResult = showResult;
-
-	BufferedReader reader = null;
-	//Extract the input- andsearch-string from the file into the variable
-	try {	
-		reader = new BufferedReader( new FileReader (inputStringFile));
-		String line = null;
-		StringBuilder stringBuilder = new StringBuilder();
-		String ls = System.getProperty("line.separator");
-
-		while( ( line = reader.readLine() ) != null ) {
-			stringBuilder.append( line );
-			stringBuilder.append( ls );					   
-		}
-		
-		this.sourceString = stringBuilder.toString();
-		alg.setSource(sourceString);
-		reader.close();
-		
-		reader = new BufferedReader(new FileReader (searchStringFile));
-		stringBuilder = new StringBuilder();
-
-		 while( ( line = reader.readLine() ) != null ) {
-			stringBuilder.append( line );            
-			stringBuilder.append( ls );              
-		}
-
-		this.searchString = stringBuilder.toString();		
-		
-		reader.close();
-
-	} catch (IOException e) {
-		e.printStackTrace();
+	this.searchString = searchString;
+	this.sourceString = sourceString;
 	
-	} finally {
-		try {
-			reader.close();
-		} catch (IOException e) {}
-	}
+	alg.setSource(sourceString);
+	
 }
 
 	
@@ -67,10 +40,15 @@ public void execute() {
 	long endTime = 0;
 	List<Integer> res = null;
 	
+	System.out.println("Searching for string " + searchString);
+	
 	for (int i = 1; i <= numberOfExecutions; i++) {
 	
 		startTime = System.nanoTime(); // get current time
+		
+		res = null;
 		res = alg.searchFor(this.searchString);
+		
 		endTime = System.nanoTime(); // get end time
 		
 		if (this.showResult) {
@@ -85,6 +63,6 @@ public void execute() {
 			}
 		}
 	
-	System.out.println("\n The found string is: " + this.sourceString.substring(res.get(0), res.get(0) + this.searchString.length() -1));
+	System.out.println("\nThe found string is: " + this.sourceString.substring(res.get(0), res.get(0) + this.searchString.length() -1));
 	}
 }
