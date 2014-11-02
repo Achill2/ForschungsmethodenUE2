@@ -2,8 +2,6 @@ package stringsearch;
 
 import java.util.List;
 
-import main.Helper;
-
 public abstract class StringSearchAlgorithm {
 	
 	

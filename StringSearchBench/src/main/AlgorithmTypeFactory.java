@@ -4,12 +4,19 @@ import pg_algorithm_impl.PrimeAlgo01;
 import pg_algorithm_impl.PrimeAlgo02;
 import primegenerator.PrimeGeneratorAlgorithm;
 
+import stringsearch.StringSearchAlgorithm;
+import ss_algorithm_impl.*;
+
 public class AlgorithmTypeFactory {
 	
 	// flags for prime-generator-algorithm types
 	public static final String PG_A = "a"; // first algorithm
 	public static final String PG_B = "b"; // second algorithm
-	
+
+	// flags for ss_algorithm types                            
+	public static final String ss_alg_naive = "ss_naive";   
+	public static final String ss_alg_rabin = "ss_rabin";   
+
 	private static AlgorithmTypeFactory instance = null;
 	
 	/**
@@ -31,7 +38,28 @@ public class AlgorithmTypeFactory {
 		
 		return instance;
 	}
+
+	/**
+	 * takes the input parameter s and returns the mapped algorithm
+	 * If no proper mapping can be found, null is returned
+	 * @param s - input Parameter mapped to an algorithm
+	 * @return
+	 */
+	public StringSearchAlgorithm getStringSearchAlgorithm(String s) {
 	
+		StringSearchAlgorithm alg = null;
+	
+		if (s.equals(ss_alg_naive)) {
+		    alg = new NaiveAlgorithm();
+		
+		} else if (s.equals(ss_alg_rabin)) {
+			alg = new RabinKarpAlgorithm();
+		}
+
+		return alg;
+	}
+
+
 	/**
 	 * takes the input parameter s and returns the mapped algorithm
 	 * If no proper mapping can be found, null is returned

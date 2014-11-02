@@ -6,11 +6,9 @@ import java.lang.management.ThreadMXBean;
 import java.math.BigDecimal;
 import java.util.List;
 
-import com.yourkit.api.Controller;
-
-import pg_algorithm_impl.PrimeAlgo01;
-import pg_algorithm_impl.PrimeAlgo02;
 import primegenerator.PrimeGeneratorAlgorithm;
+import stringsearch.StringSearchAlgorithm;
+import main.Helper;
 
 public class Main {
 	
@@ -23,34 +21,45 @@ public class Main {
 		/*
 		 * input parameters:
 		 * 1.) algorithm type: which implementation
-		 * 2.) boundary: boundary for the generation (optional)
-		 * 3.) show result (optional)
+		 * 2.) inputFile number
+		 * 3.) boundary: boundary for the generation (optional)
+		 * 4.) show result (optional)
 		 */
 		if (args.length < 1) {
 			System.err.println("Missing Argument(s)! [algorithm-type]");
 			return;
 		}
 		
-		PrimeGeneratorAlgorithm algorithm = AlgorithmTypeFactory.getInstance().getPrimeGeneratorAlgorithm(args[0]);
+		StringSearchAlgorithm algorithm = AlgorithmTypeFactory.getInstance().getStringSearchAlgorithm(args[0]);
 		
 		if (algorithm == null) {
 			System.err.println("No Algorithm found, please check the parameters");
 			return;
 		}
 		
-		
+		int fileNumber = 0;
 
-		
 		if (args.length >= 2) {
-			if (args[1].equals(Helper.SHOW_RESULT)) {
+			
+			try {
+				fileNumber = Integer.parseInt(args[1]);
+			} catch (NumberFormatException e) {
+				System.err.println("Wrong parameter value! File-Number must be an integer value!");
+				return;
+			}
+		}
+				
+
+		if (args.length >= 3) {
+			if (args[2].equals(Helper.SHOW_RESULT)) {
 				showResult = true;
 			} else {
 				int nb = numberOfExecutions;
+				
 				try {
-					nb = Integer.parseInt(args[1]);
+					nb = Integer.parseInt(args[2]);
 				} catch (NumberFormatException e) {
-					System.err
-							.println("Wrong parameter value! Number-of-executions must be an integer value!"
+					System.err.println("Wrong parameter value! Number-of-executions must be an integer value!"
 									+ "\n"
 									+ "Default ("
 									+ numberOfExecutions
@@ -60,29 +69,18 @@ public class Main {
 			}
 		}
 		
-		if (args.length >= 3) {
-			if (args[2].equals(Helper.SHOW_RESULT)) {
+		if (args.length >= 4) {
+			if (args[3].equals(Helper.SHOW_RESULT)) {
 				showResult = true;
 			}
 		}
-		
-		// hold application to connect to YourKit
-//		System.out.println("Press Enter to continue");  
-//		try{
-//			System.in.read();
-//		} catch(Exception e){
-//			System.err.println(e.getMessage());
-//		}
-		
-		int end = numberOfPreExecutions + numberOfExecutions;
-		for (int i = 0; i < end; i++) {
-//			execute(algorithm, i > 2 && i < end - 2);
-			execute(algorithm);
-		}
-		
 
+		Testcase t = TestcaseFactory.getInstance().getTestcase(algorithm, fileNumber, numberOfExecutions, showResult);
+		t.execute();
 	}
 
+	
+	/*
 	private static void executePrimeGeneratorAlgorithm(String[] args) {
 		
 		PrimeGeneratorAlgorithm algo = new PrimeAlgo02(); // TODO dynamic selection etc
@@ -164,7 +162,7 @@ public class Main {
 					);
 		}
 	}
-
+	
 	private static void execute(PrimeGeneratorAlgorithm algorithm) {
 		
 		long startTime = 0;
@@ -191,6 +189,6 @@ public class Main {
 					);
 		}
 	}
-
+*/
 	
 }

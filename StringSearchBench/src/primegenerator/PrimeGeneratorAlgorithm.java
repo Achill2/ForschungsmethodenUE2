@@ -2,8 +2,6 @@ package primegenerator;
 
 import java.util.List;
 
-import main.Helper;
-
 public abstract class PrimeGeneratorAlgorithm{
 	
 	private final int DEFAULT_BOUNDARY = 100000;
