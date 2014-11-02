@@ -22,7 +22,7 @@ public class Main {
 		
 		/*
 		 * input parameters:
-		 * 1.) algorithm type: which stringSearch/PrimeGenerator
+		 * 1.) algorithm type: which implementation
 		 * 2.) boundary: boundary for the generation (optional)
 		 * 3.) show result (optional)
 		 */
