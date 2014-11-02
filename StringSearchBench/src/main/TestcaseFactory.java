@@ -3,11 +3,12 @@ package main;
 import stringsearch.StringSearchAlgorithm;
 
 import java.io.File;
+import java.io.IOException;
 
 public class TestcaseFactory {
 	
 	//location of input files
-	public static final String inputLocation = "../input/";
+	public static final String inputLocation = "./SharedProject/StringSearchBench/input/";
 	
 	private static TestcaseFactory instance = null;
 	
@@ -32,7 +33,7 @@ public class TestcaseFactory {
 	}
 	
 	public Testcase getTestcase(StringSearchAlgorithm alg, int inputNumber, int numberOfExecutions,  boolean showResult) {
-			
+		
 		File inputStringFile = new File(inputLocation + "source_string.i" + inputNumber);
 		File searchStringFile = new File(inputLocation + "search_string.i" + inputNumber);
 

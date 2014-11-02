@@ -8,7 +8,6 @@ import java.util.List;
 
 import primegenerator.PrimeGeneratorAlgorithm;
 import stringsearch.StringSearchAlgorithm;
-import main.Helper;
 
 public class Main {
 	
@@ -49,7 +48,6 @@ public class Main {
 			}
 		}
 				
-
 		if (args.length >= 3) {
 			if (args[2].equals(Helper.SHOW_RESULT)) {
 				showResult = true;
@@ -74,7 +72,9 @@ public class Main {
 				showResult = true;
 			}
 		}
-
+		
+		//System.out.println("All arguments were read successfully");
+		
 		Testcase t = TestcaseFactory.getInstance().getTestcase(algorithm, fileNumber, numberOfExecutions, showResult);
 		t.execute();
 	}

@@ -6,13 +6,13 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 import java.util.List;
 
-import main.Helper;
 import stringsearch.StringSearchAlgorithm;
 
 public class Testcase {
 
 private StringSearchAlgorithm alg;
 private String searchString;
+private String sourceString;
 private int numberOfExecutions;
 private boolean showResult;
 
@@ -34,7 +34,8 @@ public Testcase (StringSearchAlgorithm alg, File inputStringFile, File searchStr
 			stringBuilder.append( ls );					   
 		}
 		
-		alg.setSource(stringBuilder.toString());
+		this.sourceString = stringBuilder.toString();
+		alg.setSource(sourceString);
 		reader.close();
 		
 		reader = new BufferedReader(new FileReader (searchStringFile));
@@ -73,15 +74,17 @@ public void execute() {
 		endTime = System.nanoTime(); // get end time
 		
 		if (this.showResult) {
-			System.out.println("number of result: " + i
-				+ "searchString occurrences at indices" + res);
+			System.out.println("number of result: " + i +", "
+				+ "searchString occurs at indices " + res);
 		
 			long duration = (endTime - startTime);
 			double durationInSecRounded = Helper.round(duration/Helper.NANOSEC_TO_SEC_FACTOR, 4);
-		
+			
 			System.out.println(""
-					+ "in " + duration + "nano-sec = " + durationInSecRounded + "sec");
+					+ "in " + duration + " nano-sec = " + durationInSecRounded + " sec");
 			}
 		}
+	
+	System.out.println("\n The found string is: " + this.sourceString.substring(res.get(0), res.get(0) + this.searchString.length() -1));
 	}
 }
