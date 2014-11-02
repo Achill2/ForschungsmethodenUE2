@@ -4,8 +4,7 @@ import pg_algorithm_impl.PrimeAlgo01;
 import pg_algorithm_impl.PrimeAlgo02;
 import primegenerator.PrimeGeneratorAlgorithm;
 
-import stringsearch.StringSearchAlgorithm;
-import ss_algorithm_impl.*;
+import stringsearch.*;
 
 public class AlgorithmTypeFactory {
 	
@@ -16,7 +15,10 @@ public class AlgorithmTypeFactory {
 	// flags for ss_algorithm types                            
 	public static final String ss_alg_naive = "ss_naive";   
 	public static final String ss_alg_rabin = "ss_rabin";   
-
+	public static final String ss_alg_boyer = "ss_boyer";  
+	public static final String ss_alg_kmp_dfa = "ss_kmp_dfa";  
+	public static final String ss_alg_kmp = "ss_kmp";  
+	
 	private static AlgorithmTypeFactory instance = null;
 	
 	/**
@@ -50,10 +52,15 @@ public class AlgorithmTypeFactory {
 		StringSearchAlgorithm alg = null;
 	
 		if (s.equals(ss_alg_naive)) {
-		    alg = new NaiveAlgorithm();
-		
+		    alg = new NaiveSearch();
 		} else if (s.equals(ss_alg_rabin)) {
-			alg = new RabinKarpAlgorithm();
+			alg = new RabinKarp();
+		} else if (s.equals(ss_alg_boyer)) {
+			alg = new BoyerMoore();
+		} else if (s.equals(ss_alg_kmp)) {
+			alg = new KnuthMorrisPratt();
+		} else if (s.equals(ss_alg_kmp_dfa)) {
+			alg = new KnuthMorrisPratt_DFA();
 		}
 
 		return alg;

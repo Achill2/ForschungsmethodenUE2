@@ -65,7 +65,6 @@ public class TestcaseFactory {
 			}
 			
 			sourceString = stringBuilder.toString();
-			alg.setSource(sourceString);
 			reader.close();
 			
 			reader = new BufferedReader(new FileReader (searchStringFile));
@@ -73,7 +72,7 @@ public class TestcaseFactory {
 
 			 while( ( line = reader.readLine() ) != null ) {
 				stringBuilder.append( line );            
-				stringBuilder.append( ls );              
+				//stringBuilder.append( " " );              
 			}
 
 			searchString = stringBuilder.toString();		

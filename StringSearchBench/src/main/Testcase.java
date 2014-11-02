@@ -1,6 +1,6 @@
 package main;
 
-import java.util.List;
+import java.util.LinkedList;
 
 import stringsearch.StringSearchAlgorithm;
 
@@ -28,9 +28,7 @@ public Testcase (StringSearchAlgorithm alg, String searchString, String sourceSt
 	this.showResult = showResult;
 	this.searchString = searchString;
 	this.sourceString = sourceString;
-	
-	alg.setSource(sourceString);
-	
+		
 }
 
 	
@@ -38,31 +36,31 @@ public void execute() {
 		
 	long startTime = 0;
 	long endTime = 0;
-	List<Integer> res = null;
+	LinkedList<Integer> res = null;
 	
-	System.out.println("Searching for string " + searchString);
+	//Pre-executions
+	alg.searchForPattern(searchString, sourceString);
+	alg.searchForPattern(searchString, sourceString);
 	
 	for (int i = 1; i <= numberOfExecutions; i++) {
 	
 		startTime = System.nanoTime(); // get current time
 		
 		res = null;
-		res = alg.searchFor(this.searchString);
+		res = alg.searchForPattern(searchString, sourceString);
 		
 		endTime = System.nanoTime(); // get end time
 		
 		if (this.showResult) {
-			System.out.println("number of result: " + i +", "
-				+ "searchString occurs at indices " + res);
 		
 			long duration = (endTime - startTime);
 			double durationInSecRounded = Helper.round(duration/Helper.NANOSEC_TO_SEC_FACTOR, 4);
 			
-			System.out.println(""
-					+ "in " + duration + " nano-sec = " + durationInSecRounded + " sec");
-			}
+			System.out.println(i + ": in " + duration + " nano-sec = " + durationInSecRounded + " sec \n");
 		}
+	}	
 	
-	System.out.println("\nThe found string is: " + this.sourceString.substring(res.get(0), res.get(0) + this.searchString.length() -1));
-	}
+	System.out.println("\n" + "searchString occurs at indices " + res
+							+ "\n" + "number of comparisons per calculation: " + alg.getComparisons());
+}
 }

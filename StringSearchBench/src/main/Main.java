@@ -1,12 +1,12 @@
 package main;
 
-import java.io.IOException;
-import java.lang.management.ManagementFactory;
-import java.lang.management.ThreadMXBean;
-import java.math.BigDecimal;
-import java.util.List;
+//import java.io.IOException;
+//import java.lang.management.ManagementFactory;
+//import java.lang.management.ThreadMXBean;
+//import java.math.BigDecimal;
+//import java.util.List;
 
-import primegenerator.PrimeGeneratorAlgorithm;
+//import primegenerator.PrimeGeneratorAlgorithm;
 import stringsearch.StringSearchAlgorithm;
 
 public class Main {
