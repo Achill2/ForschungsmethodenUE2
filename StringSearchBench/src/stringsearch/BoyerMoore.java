@@ -2,6 +2,23 @@ package stringsearch;
 
 import java.util.LinkedList;
 
+
+/**
+ * BoyerMoore String Search Algorithm
+ * <link>https://github.com/pmkhoa/string-pattern-matching/blob/master/src/algorithm/BoyerMoore.java</link>
+ * 
+ * Das Muster wird am Anfang linksbündig unter den Text geschrieben und dann von rechts nach links 
+ * Zeichen für Zeichen mit dem Text verglichen. Sobald ein Mismatch auftritt, berechnen zwei 
+ * Heuristiken, wie weit das Suchmuster nach rechts verschoben werden kann.
+ * 
+ * Die Worst-Case Komplexität ist Θ(n⋅m). Diese Komplexität kann jedoch durch eine zusätzlich Regel für 
+ * den Fall, dass im letzten Schritt das Muster gefunden wurde, wieder auf Θ(n+m) reduziert werden. 
+ * Verwendet man den Algorithmus jedoch für ein relativ kleines Muster und ein großes Alphabet, 
+ * erhält man eine Average-Case Komplexität von Θ(nm)
+ * 
+ * @author pmkhoa
+ *
+ */
 public class BoyerMoore implements StringSearchAlgorithm {
 	private int comparisons;
 	private int alphabet;

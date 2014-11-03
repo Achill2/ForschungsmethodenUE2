@@ -2,6 +2,24 @@ package stringsearch;
 
 import java.util.LinkedList;
 
+/**
+ * Naive String Search
+ * <link>https://github.com/pmkhoa/string-pattern-matching/blob/master/src/algorithm/NaiveSearch.java</link>
+ * 
+ * Der einfachste Algorithmus besteht darin, ein so genanntes Suchfenster von der Länge der Suchmaske über den 
+ * Text zu schieben. In jeder Position der Suchmaske werden die Symbole der Maske mit denen des darunterliegenden 
+ * Textes verglichen. Wenn ein nicht übereinstimmendes Symbol gefunden wird, wird das Fenster um eine Position 
+ * verschoben, und erneut ein Vergleich angestellt; wenn alle Symbole im Fenster übereinstimmen, ist die Suchmaske 
+ * gefunden worden. Der Algorithmus endet, wenn der ganze Text vom Fenster abgesucht worden ist.
+ * 
+ * Referring to implementation of naïve matcher, we see that the for-loop in line 3 is executed at most 
+ * n - m +1 times, and the while-loop in line 5 is executed at most m times. Therefore, the running time of 
+ * the algorithm is O((n - m +1)m), which is clearly O(nm). Hence, in the worst case, when the length of the 
+ * pattern, m are roughly equal, this algorithm runs in the quadratic time.
+ * 
+ * @author pmkhoa
+ *
+ */
 public class NaiveSearch implements StringSearchAlgorithm {
 	int comparisons = 0;
 	public NaiveSearch() {}

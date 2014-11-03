@@ -2,6 +2,15 @@ package stringsearch;
 
 import java.util.LinkedList;
 
+/**
+ * Knuth Morris Pratt Algorithm mit finite-state automaton
+ * <link>https://github.com/pmkhoa/string-pattern-matching/blob/master/src/algorithm/KnuthMorrisPratt_DFA.java</link>
+ * 
+ * Keine Ahnung was dieser Algorithmus eigentlich macht... muss irgendwie eine Mischung aus KMP und DFA sein
+ * 
+ * @author pmkhoa
+ *
+ */
 public class KnuthMorrisPratt_DFA implements StringSearchAlgorithm {
 	private int alphabet;
 	private int comparisons;

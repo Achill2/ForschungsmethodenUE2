@@ -2,6 +2,21 @@ package stringsearch;
 
 import java.util.LinkedList;
 
+
+/**
+ * Rabin Karp String Search Algorithm
+ * <link>https://github.com/pmkhoa/string-pattern-matching/blob/master/src/algorithm/RabinKarp.java</link>
+ * 
+ * Der Algorithmus sucht nach einem Muster, z. B. einer Zeichenkette, innerhalb einer anderen Zeichenkette 
+ * mit Hilfe von Hash-Werten. In der Einzelmustererkennung ist der Algorithmus nicht weit verbreitet, allerdings 
+ * ist er von beachtlicher theoretischer Bedeutung und sehr effektiv, um ein Muster mehrfach in einem Text zu suchen.
+ * 
+ * Für einen Text der Länge n und ein Muster der Länge m ist seine durchschnittliche und beste Laufzeit O(n), 
+ * die (sehr untypische) Laufzeit im schlechtesten Fall (Worst-Case-Laufzeit) beträgt allerdings O(nm).
+ * 
+ * @author pmkhoa
+ *
+ */
 public class RabinKarp implements StringSearchAlgorithm {
 	private long primeNumber;
 	private int alphabet;
