@@ -1,18 +1,10 @@
 package stringsearch;
 
-import java.util.List;
+import java.util.LinkedList;
 
-public abstract class StringSearchAlgorithm {
+public interface StringSearchAlgorithm {
 	
-	
-	protected String source;
-	
-	public void setSource(String source) {
-		this.source = source;
-		
-	}
-	
-	public abstract List<Integer> searchFor(String pattern);
-	
+	public LinkedList<Integer> searchForPattern(String pattern, String context);
+	public int getComparisons();
 
 }

@@ -2,7 +2,7 @@ package stringsearch;
 
 import java.util.LinkedList;
 
-public class BoyerMoore{
+public class BoyerMoore implements StringSearchAlgorithm {
 	private int comparisons;
 	private int alphabet;
 	public BoyerMoore() {comparisons = 0; alphabet = 256;}
@@ -14,8 +14,9 @@ public class BoyerMoore{
 			shiftTable[pattern.charAt(patternIndex)] = patternIndex;
 		return shiftTable;
 	}
-	public LinkedList<Object> searchForPattern(String pattern, String context){
-		LinkedList<Object> foundPatternList = new LinkedList<Object>();
+	
+	public LinkedList<Integer> searchForPattern(String pattern, String context){
+		LinkedList<Integer> foundPatternList = new LinkedList<Integer>();
 		int patternLength = pattern.length(); int contextLength = context.length(); int skip; 
 		int[] shiftTable = this.BoyerMooreShiftTable(pattern);
 		for(int contextIndex = 0; contextIndex < contextLength - patternLength; contextIndex += skip) {
@@ -27,15 +28,25 @@ public class BoyerMoore{
 		}
 		return foundPatternList;
 	}
+	
 	public int getMaxIntegers(int aNumber, int anotherNumber) {
 		if(aNumber >= anotherNumber) return aNumber;
 		else return anotherNumber;
 	}
+	
 	public boolean compareTwoChars(char aChar, char anotherChar) {
 		comparisons++;
 		return aChar == anotherChar;
 	}
-	public void printFoundPattern(LinkedList<Object> foundPatternList) {
+	
+	public int getComparisons() {
+		int temp = comparisons;
+		comparisons = 0;
+		return temp;
+	}
+	
+	/*
+	public void printFoundPattern(LinkedList<Integer> foundPatternList) {
 		int listSize = foundPatternList.size();
 		System.out.println("Number of comparisons (Boyer Moore): "+comparisons);
 		System.out.print("Found pattern in text at: ");
@@ -44,8 +55,8 @@ public class BoyerMoore{
 		System.out.println();
 	}
 	public void foundPatternInContext(String pattern, String context) {
-		LinkedList<Object> foundPatternList = this.searchForPattern(pattern, context);
+		LinkedList<Integer> foundPatternList = this.searchForPattern(pattern, context);
 		if(foundPatternList.isEmpty()) System.out.println("Number of comparisons (Boyer Moore): "+comparisons + ". No pattern found in text.");
 		else this.printFoundPattern(foundPatternList);
-	}
+	} */
 }

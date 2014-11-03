@@ -2,12 +2,12 @@ package stringsearch;
 
 import java.util.LinkedList;
 
-public class NaiveSearch {
+public class NaiveSearch implements StringSearchAlgorithm {
 	int comparisons = 0;
 	public NaiveSearch() {}
 	
-	public LinkedList<Object> searchForPattern(String pattern, String context) {
-		LinkedList<Object> foundPatternList = new LinkedList<Object>();
+	public LinkedList<Integer> searchForPattern(String pattern, String context) {
+		LinkedList<Integer> foundPatternList = new LinkedList<Integer>();
 		int patternLength = pattern.length(); int contextLength = context.length();
 		for(int contextIndex = 0; contextIndex <= contextLength - patternLength; contextIndex++) {
 			int match = 0;
@@ -20,7 +20,13 @@ public class NaiveSearch {
 		}
 		return foundPatternList;
 	}
-	public void printFoundPattern(LinkedList<Object> foundPatternList) {
+	
+	public int getComparisons() {
+		return comparisons;
+	}
+	
+	/*
+	public void printFoundPattern(LinkedList<Integer> foundPatternList) {
 		int listSize = foundPatternList.size();
 		System.out.println("Number of comparisons (Naive Search): "+comparisons);
 		System.out.print("Found pattern in text at: ");
@@ -29,8 +35,8 @@ public class NaiveSearch {
 		System.out.println();
 	}
 	public void foundPatternInContext(String pattern, String context) {
-		LinkedList<Object> foundPatternList = this.searchForPattern(pattern, context);
+		LinkedList<Integer> foundPatternList = this.searchForPattern(pattern, context);
 		if(foundPatternList.isEmpty()) System.out.println("Number of comparisons (Naive Search): "+comparisons + ". No pattern found in text.");
 		else this.printFoundPattern(foundPatternList);
-	}	
+	}	*/
 }
