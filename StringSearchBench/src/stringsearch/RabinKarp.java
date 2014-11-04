@@ -20,7 +20,7 @@ import java.util.LinkedList;
 public class RabinKarp implements StringSearchAlgorithm {
 	private long primeNumber;
 	private int alphabet;
-	private int comparisons;
+	private long comparisons;
 	public RabinKarp() {primeNumber = 15485867; alphabet = 256; comparisons = 0;}
 	
 	public long computeSpecialValue(int patternLength) {
@@ -70,7 +70,7 @@ public class RabinKarp implements StringSearchAlgorithm {
 		return true;
 	}
 	
-	public int getComparisons() {
+	public long getComparisons() {
 		return comparisons;
 	}
 	

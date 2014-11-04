@@ -61,6 +61,6 @@ public void execute() {
 	}	
 	
 	System.out.println("\n" + "searchString occurs at indices " + res
-							+ "\n" + "number of comparisons per calculation: " + alg.getComparisons());
+							+ "\n" + "number of comparisons per calculation: " + (alg.getComparisons()/(this.numberOfExecutions + 2)));  //number of executions + preexecutions
 }
 }

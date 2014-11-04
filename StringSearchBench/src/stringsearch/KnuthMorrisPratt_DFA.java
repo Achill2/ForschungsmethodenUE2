@@ -13,7 +13,7 @@ import java.util.LinkedList;
  */
 public class KnuthMorrisPratt_DFA implements StringSearchAlgorithm {
 	private int alphabet;
-	private int comparisons;
+	private long comparisons;
 	
 	public KnuthMorrisPratt_DFA() {alphabet = 256; comparisons = 0;}
 	public int[][] DFA(String pattern) {
@@ -41,7 +41,7 @@ public class KnuthMorrisPratt_DFA implements StringSearchAlgorithm {
 		return foundPatternList;
 	}
 	
-	public int getComparisons() {
+	public long getComparisons() {
 		return comparisons;
 	}
 	

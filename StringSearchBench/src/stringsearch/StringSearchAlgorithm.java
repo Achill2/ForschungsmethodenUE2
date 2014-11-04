@@ -5,6 +5,6 @@ import java.util.LinkedList;
 public interface StringSearchAlgorithm {
 	
 	public LinkedList<Integer> searchForPattern(String pattern, String context);
-	public int getComparisons();
+	public long getComparisons();
 
 }

@@ -21,7 +21,7 @@ import java.util.LinkedList;
  *
  */
 public class NaiveSearch implements StringSearchAlgorithm {
-	int comparisons = 0;
+	long comparisons = 0;
 	public NaiveSearch() {}
 	
 	public LinkedList<Integer> searchForPattern(String pattern, String context) {
@@ -39,7 +39,7 @@ public class NaiveSearch implements StringSearchAlgorithm {
 		return foundPatternList;
 	}
 	
-	public int getComparisons() {
+	public long getComparisons() {
 		return comparisons;
 	}
 	

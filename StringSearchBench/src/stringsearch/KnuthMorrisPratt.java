@@ -25,7 +25,7 @@ import java.util.LinkedList;
  *
  */
 public class KnuthMorrisPratt implements StringSearchAlgorithm {
-	private int comparisons;
+	private long comparisons;
 	
 	public KnuthMorrisPratt() {comparisons = 0;}
 	public int[] computePrefix(String pattern) {
@@ -63,7 +63,7 @@ public class KnuthMorrisPratt implements StringSearchAlgorithm {
 		return aChar == anotherChar;
 	}
 	
-	public int getComparisons() {
+	public long getComparisons() {
 		return comparisons;
 	}
 	

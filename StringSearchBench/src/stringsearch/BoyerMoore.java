@@ -20,7 +20,7 @@ import java.util.LinkedList;
  *
  */
 public class BoyerMoore implements StringSearchAlgorithm {
-	private int comparisons;
+	private long comparisons;
 	private int alphabet;
 	public BoyerMoore() {comparisons = 0; alphabet = 256;}
 	
@@ -56,10 +56,9 @@ public class BoyerMoore implements StringSearchAlgorithm {
 		return aChar == anotherChar;
 	}
 	
-	public int getComparisons() {
-		int temp = comparisons;
-		comparisons = 0;
-		return temp;
+	public long getComparisons() {
+		return comparisons;
+		
 	}
 	
 	/*
